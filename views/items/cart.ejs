@@ -1,0 +1,74 @@
+<% -layout("layouts/boilerplate.ejs")%>
+  <div class="container mt-5">
+
+    <h3 class="mb-4 text-center">Your Cart</h3>
+
+    <% if (cart && cart.items.length> 0) { %>
+
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+
+          <% let totalPrice=0; %>
+
+            <% cart.items.forEach(item=> { %>
+              <% totalPrice +=item.itemprice; %>
+
+                <div class="card mb-3">
+                  <div class="row g-0 align-items-center">
+                    <div class="col-md-4">
+                      <img src="<%= item.itemimage %>" class="img-fluid rounded-start"
+                        style="height: 120px; width: 120px; object-fit: cover;" alt="item image">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          <%= item.itemname %>
+                        </h5>
+                        <p class="card-text">
+                          Price: ₹ <%= item.itemprice.toLocaleString("en-IN") %>
+                        </p>
+
+                        <div class="col-md-4 text-end">
+                          <form method="POST" action="/items/cart/<%= item._id %>/delete">
+                            <button class="btn btn-outline-danger btn-sm">
+                              <i class="fa-solid fa-trash-can"></i>
+                            </button>
+                          </form>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <% }) %>
+
+                  <!-- TOTAL PRICE -->
+                  <div class="d-flex justify-content-between align-items-center mt-4 border-top pt-3">
+                    <h5>Total Amount</h5>
+                    <h5>₹ <%= totalPrice.toLocaleString("en-IN") %>
+                    </h5>
+                  </div>
+
+                  <!-- PLACE ORDER BUTTON -->
+                  <form method="POST" action="/items/order/place">
+                    <div class="d-grid mt-4">
+                      <button class="btn btn-danger btn-lg">
+                        Place Order
+                      </button>
+                    </div>
+                  </form>
+
+        </div>
+      </div>
+
+      <% } else { %>
+
+        <!-- EMPTY CART -->
+        <div class="text-center mt-5">
+          <h5>Your cart is empty 🛒</h5>
+          <a href="/items" class="btn btn-outline-danger mt-3">
+            Continue Shopping
+          </a>
+        </div>
+
+        <% } %>

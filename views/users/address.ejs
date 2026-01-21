@@ -1,0 +1,87 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-12 col-md-6 col-lg-5">
+
+                <form method="POST" action="/user/address" novalidate class="needs-validation">
+
+                    <div class="mb-3">
+                        <input type="text" name="fullname" minlength="3" maxlength="50" class="form-control" placeholder="Full Name" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Full Name is required.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="tel" name="phno" minlength="10" maxlength="10" class="form-control" placeholder="Phone Number" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Phone number is required.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="text" minlength="10" maxlength="50" name="street" class="form-control" placeholder="Street Address" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                           Street address required.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="text" name="city" minlength="3" maxlength="10" class="form-control" placeholder="City" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            City required!
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="text" name="state" minlength="3" maxlength="10" class="form-control" placeholder="State" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            State required.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="tel" name="pincode" minlength="6" maxlength="6" class="form-control" placeholder="Pincode" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Pincode required.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <input type="text" name="country" minlength="3" maxlength="10" class="form-control" placeholder="Country" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Country is required.
+                        </div>
+                    </div>
+
+                    <div class="d-grid">
+                        <button class="btn btn-danger">Save Address</button>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>

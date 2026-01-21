@@ -1,0 +1,63 @@
+<% layout("/layouts/boilerplate.ejs")%>
+    <style>
+        .btn-addtocart {
+            background-color: transparent;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: none;
+            outline: none;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .btn-addtocart:hover {
+            background-color: #fe424d;
+            color: black;
+        }
+
+        .listing-card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-body {
+            margin-top: auto;
+        }
+
+        .item-img {
+            height: 20rem;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .card-img-top {
+            height: 280px;
+            /* same height for all */
+            width: 100%;
+            object-fit: contain;
+            /* keeps full image */
+            background-color: #fff;
+        }
+        .card{
+            border: none !important;
+            box-shadow: none !important;
+        }
+    </style>
+    <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+        <% for(let item of allitems) {%>
+            <div class="card col listing-card">
+                <img src="<%=item.itemimage%>" class="card-img-top" alt="listing_image">
+                <div class="card-body">
+                    <b>
+                        <p class="card-text">
+                            <%=item.itemname%>
+                    </b><br>
+                    &#8377;<%=item.itemprice.toLocaleString("en-IN")%>
+                        <form method="POST" action="/items/<%= item._id %>/addtocart">
+                            <button type="submit" class="btn-addtocart">Add to cart</button>
+                        </form>
+                </div>
+            </div>
+            <% } %>
+    </div>
